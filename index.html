@@ -46,6 +46,7 @@ Output Format: <select name="format" onchange="setfmt()">
 Use Web Workers: (when available) <input type="checkbox" name="useworker" checked>
 Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" checked>
 </pre>
+        <canvas id="myChart"></canvas>
         <pre id="out"></pre>
         <div id="htmlout"></div>
         <br />
@@ -54,7 +55,9 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
         <script src="shim.js"></script>
         <script src="jszip.js"></script>
         <script src="xlsx.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script src="src/sheetReader.js"></script>
+        <script src="src/plotWriter.js"></script>
         <script>
             /*jshint browser:true */
             /* eslint-env browser */
