@@ -24,8 +24,17 @@ class SheetReader {
       return this.getRef().match((/\d/g))[1]-1;
     }
 
+    //TODO you should use https://docs.sheetjs.com/#dates
+    isDate(numericalValue){
+      var dateReg = /\d{1,2}([./-])\d{1,2}\1\d{2,4}/;
+      return numericalValue.match(dateReg) ? 'd' : 'n';
+    }
+
     getColumnType(columnName) {
-      return this.sheet[columnName+'2'].t;
+      // TODO 
+      const columnType = this.sheet[columnName+'2'].t;
+      const columnValue = this.sheet[columnName+'2'].w;
+      return columnType === 'n' ? this.isDate(columnValue) : columnType ;
     }
 
     getSequences(columnNames){
@@ -39,7 +48,7 @@ class SheetReader {
     getSequence(columnName){
       const cells = Object.keys(this.sheet).filter(cell => cell.indexOf(columnName) > -1);
       const columnNameAndType = this.getColumnNameAndType(columnName);
-      return [columnNameAndType ].concat(cells.map(key => this.sheet[key].v));
+      return [columnNameAndType ].concat(cells.map(key => this.sheet[key].w));
     }
   }
   

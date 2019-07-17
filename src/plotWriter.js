@@ -9,10 +9,15 @@ class PlotWriter {
         return this.sequences.filter(sequence => sequence[0] === type);
     }
 
+    isDate() { 
+        return this.getSequences('d').length > 0;
+    }
+
     getChartObject() {
         var chartObject = {
             // The type of chart we want to create
-            type: 'line',
+            // TODO
+            type: this.isDate() ? 'line' : 'bar',
             // The data for our dataset
             data: {
                 datasets: []
@@ -20,8 +25,9 @@ class PlotWriter {
             // Configuration options go here
             options: {}
         }
-
-        chartObject.data.labels = this.getSequences('s')[0].slice(2);
+        console.log('this.getSequences("s"): ',this.getSequences('s'));
+        // TODO
+        chartObject.data.labels = this.isDate() ? this.getSequences('d')[0].slice(2) : this.getSequences('s')[0].slice(2);
 
         this.getSequences('n').forEach(function(sequence) {
             chartObject.data.datasets.push({
@@ -39,4 +45,3 @@ class PlotWriter {
     }
 
 }
-
