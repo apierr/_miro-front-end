@@ -3,6 +3,7 @@ class SheetReader {
       this.sheet = global_wb.Sheets.Sheet1
       console.log(this.getColumnName());
       console.log(this.getPointsCount());
+      console.log(this.getColumnType());
     }
 
     getRef() {
@@ -23,5 +24,11 @@ class SheetReader {
 
     getPointsCount() {
       return this.getRef().match((/\d/g))[1]-1;
+    }
+
+    getColumnType() {
+      this.getColumnName().forEach(function(element) {
+        console.log(element, global_wb.Sheets.Sheet1[element+'2'].t);
+      })
     }
   }
