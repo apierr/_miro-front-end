@@ -1,7 +1,8 @@
 class SheetReader {
     constructor(global_wb) {
       this.sheet = global_wb.Sheets.Sheet1;
-      new PlotWriter(this.getSequences(this.getColumnName()));
+      console.log('getDataFrameType:', this.getDataFrameType());
+      // new PlotWriter(this.getSequences(this.getColumnNames()));
     }
 
     getRef() {
@@ -12,7 +13,7 @@ class SheetReader {
       return [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
     }
 
-    getColumnName() {
+    getColumnNames() {
       // TODO find a more compact way to do it
       const lastColumn = this.getRef().match(/[A-E]/g)[1];
       const uppercaseLetters = this.getUppercaseLetters()
@@ -21,13 +22,27 @@ class SheetReader {
     }
 
     getPointsCount() {
-      return this.getRef().match((/\d/g))[1]-1;
+      return this.getRef().match((/\d/g))[1]-1 + 'P';
     }
 
     //TODO you should use https://docs.sheetjs.com/#dates
     isDate(numericalValue){
       var dateReg = /\d{1,2}([./-])\d{1,2}\1\d{2,4}/;
       return numericalValue.match(dateReg) ? 'd' : 'n';
+    }
+
+    getColumnTypes() {
+      return this.getColumnNames().map(columnName => this.getColumnType(columnName));
+    }
+
+    getDataFrameType() {
+      const colTypes = this.getColumnTypes();
+      var dfType = '';
+      ['n', 's', 'd'].forEach(function(e) {
+        dfType += colTypes.filter(colType => colType == e).length + e + '+';
+      });
+      dfType = dfType.replace(/(0[a-z])/,'').replace(/\+\+/,'\+');
+      return dfType.slice(0, -1)+ '+' + this.getPointsCount();
     }
 
     getColumnType(columnName) {
