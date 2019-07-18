@@ -1,7 +1,6 @@
 class SheetReader {
     constructor(global_wb) {
       this.sheet = global_wb.Sheets.Sheet1;
-      new HttpRequest(this.getDataFrameType()); 
     }
 
     getRef() {
