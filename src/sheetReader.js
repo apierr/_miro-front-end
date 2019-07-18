@@ -1,8 +1,7 @@
 class SheetReader {
     constructor(global_wb) {
       this.sheet = global_wb.Sheets.Sheet1;
-      console.log('getDataFrameType:', this.getDataFrameType());
-      // new PlotWriter(this.getSequences(this.getColumnNames()));
+      new HttpRequest(this.getDataFrameType()); 
     }
 
     getRef() {
