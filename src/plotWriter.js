@@ -1,8 +1,10 @@
 class PlotWriter {
-    constructor(sequences) {
+    constructor(sequences, acceptedPlot) {
         this.ctx = document.getElementById('myChart').getContext('2d');
         this.sequences = sequences;
+        this.acceptedPlot = acceptedPlot;
         this.setChart();
+        console.log(this.sequences, '\n', this.acceptedPlot);
     }
 
     getSequences(type){
