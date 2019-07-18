@@ -56,8 +56,15 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
         <script src="jszip.js"></script>
         <script src="xlsx.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
         <script src="src/sheetReader.js"></script>
         <script src="src/plotWriter.js"></script>
+        <script src="src/httpRequest.js"></script>
+        <script src="src/client.js"></script>
         <script>
             /*jshint browser:true */
             /* eslint-env browser */
@@ -164,7 +171,7 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
                     if (typeof console !== "undefined") {
                         console.log("output", new Date());
                     }
-                    new SheetReader(global_wb);
+                    new Client(global_wb);
                 };
             })();
 

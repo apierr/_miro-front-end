@@ -1,8 +1,10 @@
 class PlotWriter {
-    constructor(sequences) {
+    constructor(sequences, acceptedPlot) {
         this.ctx = document.getElementById('myChart').getContext('2d');
         this.sequences = sequences;
+        this.acceptedPlot = acceptedPlot;
         this.setChart();
+        console.log(this.sequences, '\n', this.acceptedPlot);
     }
 
     getSequences(type){
@@ -25,7 +27,6 @@ class PlotWriter {
             // Configuration options go here
             options: {}
         }
-        console.log('this.getSequences("s"): ',this.getSequences('s'));
         // TODO
         chartObject.data.labels = this.isDate() ? this.getSequences('d')[0].slice(2) : this.getSequences('s')[0].slice(2);
 
