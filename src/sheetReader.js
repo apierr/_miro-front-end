@@ -51,7 +51,8 @@ class SheetReader {
       return columnType === 'n' ? this.isDate(columnValue) : columnType ;
     }
 
-    getSequences(columnNames){
+    getSequences(){
+      const columnNames = this.getColumnNames();
       return columnNames.map(columnName => this.getSequence(columnName));
     }
 
