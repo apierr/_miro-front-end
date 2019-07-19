@@ -24,6 +24,7 @@ class LinePlot {
         this.getSequences('n').forEach(function(sequence) {
             chartObject.data.datasets.push({
                 label: sequence[1],
+                fill: false,
                 borderWidth: 1,
                 data: sequence.slice(2)
             })

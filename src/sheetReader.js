@@ -13,7 +13,7 @@ class SheetReader {
 
     getColumnNames() {
       // TODO find a more compact way to do it
-      const lastColumn = this.getRef().match(/[A-E]/g)[1];
+      const lastColumn = this.getRef().match(/[A-Z]/g)[1];
       const uppercaseLetters = this.getUppercaseLetters()
       const lastIndex = uppercaseLetters.indexOf(lastColumn) + 1;
       return uppercaseLetters.slice(0, lastIndex);
@@ -25,7 +25,7 @@ class SheetReader {
 
     //TODO you should use https://docs.sheetjs.com/#dates
     isDate(numericalValue){
-      var dateReg = /\d{1,2}([./-])\d{1,2}\1\d{2,4}/;
+      var dateReg = /\d{1,4}([./-])\d{1,2}\1\d{1,4}/;
       return numericalValue.match(dateReg) ? 'd' : 'n';
     }
 
@@ -45,6 +45,8 @@ class SheetReader {
 
     getColumnType(columnName) {
       // TODO 
+      console.log('columnName:', columnName);
+      window.miro_sheet = this.sheet;
       const columnType = this.sheet[columnName+'2'].t;
       const columnValue = this.sheet[columnName+'2'].w;
       return columnType === 'n' ? this.isDate(columnValue) : columnType ;

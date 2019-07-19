@@ -185,19 +185,6 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
                 if (global_wb) process_wb(global_wb);
             });
 
-            var b64it = (window.b64it = (function() {
-                var tarea = document.getElementById("b64data");
-                return function b64it() {
-                    if (typeof console !== "undefined")
-                        console.log("onload", new Date());
-                    var wb = X.read(tarea.value, {
-                        type: "base64",
-                        WTF: false
-                    });
-                    process_wb(wb);
-                };
-            })());
-
             var do_file = (function() {
                 var rABS =
                     typeof FileReader !== "undefined" &&
@@ -240,12 +227,16 @@ Use readAsBinaryString: (when available) <input type="checkbox" name="userabs" c
                         var data = e.target.result;
                         if (!rABS) data = new Uint8Array(data);
                         if (use_worker) xw(data, process_wb);
-                        else
+                        else {
+                            console.log("process_wb,......", process_wb);
                             process_wb(
                                 X.read(data, {
-                                    type: rABS ? "binary" : "array"
+                                    type: rABS ? "binary" : "array",
+                                    sheetStubs: true,
+                                    cellDates: false
                                 })
                             );
+                        }
                     };
                     if (rABS) reader.readAsBinaryString(f);
                     else reader.readAsArrayBuffer(f);
