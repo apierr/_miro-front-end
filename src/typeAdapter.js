@@ -15,9 +15,11 @@ class TypeAdapter {
             if(e>pointCount) {pointLimit = i + 1; return true;}
         });
         dfType = dfType.replace(/s/gi, 'C')
-        .replace(/n/gi, 'N')
-        .replace(/d/gi, 'D');
-        dfType = dfType.replace(/(\d{1,})P/,pointLimit+'P');
+            .replace(/n/gi, 'N')
+            .replace(/d/gi, 'D')
+            .replace(/(\d{1,})P/,pointLimit+'P')
+            .replace(/0[A-Z]/,'')
+            .replace(/\+\+/,'+');
 
         return dfType;
     }
