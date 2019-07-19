@@ -20,7 +20,7 @@ class SheetReader {
     }
 
     getPointsCount() {
-      return this.getRef().match((/\d/g))[1]-1 + 'P';
+      return this.getRef().match((/\d{1,}/g))[1]-1 + 'P';
     }
 
     //TODO you should use https://docs.sheetjs.com/#dates
