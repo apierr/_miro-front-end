@@ -7,7 +7,7 @@ class HttpRequest {
 
     acceptedPlot() {
         return $.ajax( {
-            url: 'http://localhost:8080/miro-api/acceptedPlot/N+3P' 
+            url: 'http://localhost:8080/miro-api/acceptedPlot/' + this.dfType
         });
     }
 }
