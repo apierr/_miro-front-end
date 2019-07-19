@@ -29,7 +29,7 @@ class BoxPlot {
                 outlierRadius: 3,
                 itemRadius: 3,
                 outlierColor: "#999999",
-                data: [[], this.randomValues(200, 0, 100)]
+                data: [this.randomValues(200, 0, 100), this.randomValues(200, 0, 100)]
               }
             ]
           };
