@@ -1,7 +1,8 @@
 class Client {
     constructor(global_wb) {
         const sr = new SheetReader(global_wb);
-        const xhttp = new HttpRequest(sr.getDataFrameType());
+        const typeA = new TypeAdapter(sr.getDataFrameType());
+        const xhttp = new HttpRequest(typeA.getDfType());
         $.when( xhttp.acceptedPlot()).then(
             function success (data){
                 // TODO in backend part you can output just the string or json
