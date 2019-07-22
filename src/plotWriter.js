@@ -10,5 +10,8 @@ class PlotWriter {
         if (acceptedPlot.includes("PiePlot")) {
             new PiePlot(sequences, acceptedPlot);
         }
+        if (acceptedPlot.includes("BoxPlot")) {
+            new BoxPlot(sequences, acceptedPlot);
+        }
     }
 }
