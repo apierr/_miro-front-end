@@ -25,6 +25,7 @@ class LinePlot {
             chartObject.data.datasets.push({
                 label: sequence[1],
                 fill: false,
+                borderColor: '#ff0000',
                 borderWidth: 1,
                 data: sequence.slice(2)
             })

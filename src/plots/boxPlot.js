@@ -17,7 +17,6 @@ class BoxPlot {
         );
       }
 
-
     getChartObject() {
         const boxplotData = {
             labels: ["A", "B"],
@@ -64,5 +63,4 @@ class BoxPlot {
     setChart() {
         new Chart(this.ctx, this.getChartObject());
     }
-
 }
