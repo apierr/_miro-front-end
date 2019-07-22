@@ -1,6 +1,6 @@
 .PHONY: react
 react: ## Simple server for react and clones
-	python -mSimpleHTTPServer
+	python2.7 -mSimpleHTTPServer
 
 .PHONY: next
 next: init ## next.js demo
